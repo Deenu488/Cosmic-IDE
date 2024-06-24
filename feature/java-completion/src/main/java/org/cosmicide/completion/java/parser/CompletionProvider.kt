@@ -318,7 +318,7 @@ class CompletionProvider {
                     }
                 }
                 val className = element.text.substring(0, element.text.length - 1)
-                println("className: $className)
+                println("className: $className")
                 // check if it is imported
                 val qualified = if (isImported.first) isImported.second else "java.lang.$className"
                 println("prob static, qualified: $qualified")
