@@ -35,7 +35,7 @@ object AppLogger {
     newSingleThreadExecutor().execute {
       try {
         clear()
-        val file = File(mContext.getExternalFilesDir(null), "vultureide_logs.txt")
+        val file = File(mContext.getExternalFilesDir(null), "ide_logs.txt")
         file.createNewFile()
         val process = Runtime.getRuntime().exec("logcat -f " + file.absolutePath)
         val reader = BufferedReader(InputStreamReader(process.inputStream))
@@ -91,7 +91,7 @@ object AppLogger {
       message: String,
   ) {
     try {
-      val file = File(mContext.getExternalFilesDir(null), "vultureide_logs.txt")
+      val file = File(mContext.getExternalFilesDir(null), "ide_logs.txt")
       val writer = FileWriter(file, true)
       writer.write("[$type] $message\n")
       writer.flush()
