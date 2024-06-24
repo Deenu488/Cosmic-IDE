@@ -236,6 +236,7 @@ class CompletionProvider {
             println("Package name: $packageName")
             if (packageName.endsWith('.')) {
                 val mPackage = packageName.substringBeforeLast('.')
+                println("mPackage: $mPackage")
                 symbolCacher.getPackages()
                     .filter {
                         val parentPkgName = it.key.substringBeforeLast('.')
@@ -246,6 +247,9 @@ class CompletionProvider {
                     }
                     .map {
                         val toAdd = it.key.substringAfterLast('.')
+                        val value = it.key.substringBeforeLast('.')
+                       println("toAdd: $toAdd")
+                       println("value: $value")
                         completionItems.add(
                             EditorCompletionItem(
                                 toAdd,
@@ -314,6 +318,7 @@ class CompletionProvider {
                     }
                 }
                 val className = element.text.substring(0, element.text.length - 1)
+                println("className: $className)
                 // check if it is imported
                 val qualified = if (isImported.first) isImported.second else "java.lang.$className"
                 println("prob static, qualified: $qualified")
@@ -336,6 +341,7 @@ class CompletionProvider {
                 addAllFieldAndMethods(clazz, completionItems, true)
             } else {
                 val packageName = element.text.substringBeforeLast('.')
+                println("Package name2: $packageName")
                 if (packageName.isEmpty()) {
                     return completionItems
                 }
