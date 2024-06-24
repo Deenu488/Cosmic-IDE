@@ -50,6 +50,7 @@ import java.time.ZonedDateTime
 import java.util.Locale
 import java.util.TimeZone
 import java.util.logging.Logger
+import org.cosmicide.AppLogger.initialize
 
 class App : Application() {
 
@@ -64,7 +65,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
+        initialize(this)
         if (FileUtil.isInitialized.not()) return
 
         Log.d("Analytics", "Initializing")
